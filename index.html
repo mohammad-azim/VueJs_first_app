@@ -3,18 +3,43 @@
 <head>
 	<title>VueJs</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="vue.js"></script>
 </head>
 <body>
-	<div id="app">
-		<p>{{title}}</p>
+	<div id="app" style="padding: 50px">
+		<h1 v-bind:title="date">{{title}}</h1>
+		<h2>{{msg}}</h2>
+		<p>{{date}}</p>
+		<span v-if="seen">new see me</span>
+		<ol>
+			<li v-for="todo in todoes">
+				{{todo.text}}
+			</li>
+		</ol>
+		<button v-on:click="reverseMessage">Reverse the title</button>
+		<br><br>
+		<input v-model = "msg">
 	</div>
 
 	<script>
-		new Vue({
+		var app = new Vue({
 			el: "#app",
 			data: {
-				title: 'This is my first app in VueJs'
-			}
+				title: 'This is my first app in VueJs',
+				msg: "sample message",
+				date: new Date().toLocaleString(),
+				seen: true,
+				todoes: [
+					{text: 'learn JS'},
+					{text: 'learn CSS'},
+					{text: 'learn HTML'}
+				]
+			},
+			methods: {
+					reverseMessage: function() {
+						this.title = this.title.split('').reverse().join('')
+					}
+				}
 		});
 	</script>
 </body>
