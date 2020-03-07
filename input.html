@@ -8,8 +8,14 @@
 <body>
 	<div id="app" style="text-align: center;">
 		<h1>{{welcom}}</h1>
-		<button v-on:click="increase">Click</button>
-		<h1>{{counter}}</h1>
+		<button v-on:click="increase(3)">Click</button>
+		<button v-on:click="counter++">Click1</button>
+		<h1>{{counter * 3}}</h1>
+		<p v-on:mousemove="updatecoordinates">Coordinates: {{x}} / {{y}}</p> 
+		- <span v-on:mousemove.stop>MOUSE OVER HERE TO STOP ACTION</span>
+		<!-- modifires and  -->
+		<hr>
+		<input v-on:keyup.enter.space="alertMe">
 	</div>
 
 	<script>
@@ -17,11 +23,20 @@
 			el: "#app",
 			data: {
 				welcom:'Welcome Here!',
-				counter:0
+				counter:0,
+				x:0,
+				y:0
 			},
 			methods:{
-				increase: function(){
-					this.counter++;
+				increase: function(step){
+					this.counter += step;
+				},
+				updatecoordinates: function(event){
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
+				alertMe: function(){
+					alert('alert');
 				}
 			}
 		});
