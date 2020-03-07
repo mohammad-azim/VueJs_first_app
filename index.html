@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div id="app" style="padding: 50px">
-		<h1 v-bind:title="date">{{title}}</h1>
+		<h1 v-bind:title="date">{{title | capitalize}}</h1>
 		<h2>{{msg}}</h2>
 		<p>{{date}}</p>
 		<span v-if="seen">new see me</span>
@@ -20,6 +20,15 @@
 		<br><br>
 		<input v-model = "msg">
 	</div>
+	<hr>
+<!-- ===================next section ============================== -->
+<div id="app2" style="text-align: center;">
+	<h2>{{ title }}</h2>
+	<p></p>
+
+</div>
+
+
 
 	<script>
 		var app = new Vue({
@@ -41,6 +50,20 @@
 					}
 				}
 		});
+
+		new Vue({
+			el: '#app2',
+			data: {
+				title: "Welcome to VueJs!",
+				link: "google.com"
+			},
+			methods: {
+				say: function(){
+					
+				}
+			}
+		});
+
 	</script>
 </body>
 </html>
