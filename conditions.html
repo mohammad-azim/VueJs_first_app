@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJs</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app" style="text-align: center;">
+		<template v-if="welcom">
+			<h1>heading</h1>
+			<p>this is nice</p>
+		</template>
+		<h1 v-if="welcom">Welcome here. see me! <span>Hello!</span></h1>
+		<h1 v-else>Now you can see!</h1>
+		<button @click="welcom = !welcom">Click</button>
+	</div>
+
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				welcom: false
+			}
+		});
+	</script>
+</body>
+</html>
