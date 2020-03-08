@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJs</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- <script type="text/javascript" src="vue.js"></script> -->
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(name, i) in names">{{name}}({{i}})</li>
+		</ul>
+
+		<template v-for="(name, i) in names">
+			<h1>{{name}}</h1>
+			<p>{{i}}</p>
+		</template>
+	</div>
+
+	<ul>
+		<li v-for="person in persons">
+			<div v-for="(value, key) in person">{{key:}},{{value}}</div>
+		</li>
+		<p v-for="n in 10">{{n}}</p>
+	</ul>
+
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				names: ['ali','mahdi','fatih ']
+			},
+			persons: [
+			{name:"ali", age: 34},
+			{name:"hhamdi", age: 45}
+			]
+		});
+	</script>
+</body>
+</html>
